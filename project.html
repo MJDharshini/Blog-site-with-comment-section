@@ -1,73 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Project Documentation - Command Section</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Blog Site</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-      line-height: 1.6;
-      background-color: #f9f9f9;
-      color: #333;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
     }
+
+    .container {
+      width: 80%;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
     h1 {
       text-align: center;
-      margin-bottom: 30px;
-      color: #2c3e50;
+      color: #333;
     }
-    h2 {
-      color: #34495e;
-      border-bottom: 2px solid #2980b9;
-      padding-bottom: 6px;
-      margin-top: 40px;
+
+    .blog-post {
+      margin-bottom: 40px;
     }
-    p {
-      margin: 10px 0 20px 0;
+
+    .comment-section {
+      border-top: 2px solid #ddd;
+      padding-top: 20px;
+    }
+
+    .comment {
+      background: #f1f1f1;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
-  <h1>Command Section</h1>
-  <p>Use this section to navigate through the project documentation and demonstration.</p>
 
-  <h2>Final Demo Walkthrough</h2>
-  <p>
-    A comprehensive video or step-by-step guide showcasing the final working project,
-    including feature demonstrations, use cases, and performance insights.
-  </p>
+  <div class="container">
+    <h1>My Blog Site</h1>
 
-  <h2>Project Report</h2>
-  <p>
-    Detailed write-up covering objectives, methodology, outcomes, and conclusions.
-    Includes background research, results, and future work suggestions.
-  </p>
+    <div class="blog-post">
+      <h2>How I Built My First Blog</h2>
+      <p>
+        Creating my first blog was an exciting experience. I learned how to structure pages using HTML, 
+        style them using CSS, and add functionality using JavaScript. This project helped me understand 
+        the importance of front-end development in creating interactive websites.
+      </p>
+    </div>
 
-  <h2>Screenshots / API Documentation</h2>
-  <p>
-    Visuals of key UI components and detailed API references for developers.
-    Includes endpoints, request/response formats, error handling, and usage examples.
-  </p>
+    <div class="comment-section">
+      <h3>Leave a Comment</h3>
+      <form id="commentForm">
+        <input type="text" id="name" placeholder="Your name" required>
+        <textarea id="comment" placeholder="Write your comment here..." required></textarea>
+        <button type="submit">Post Comment</button>
+      </form>
 
-  <h2>Challenges & Solutions</h2>
-  <p>
-    Discussion of problems faced during development and how they were resolved.
-    Highlights technical, development, and team challenges with applied solutions.
-  </p>
+      <h3>Comments:</h3>
+      <div id="commentList"></div>
+    </div>
+  </div>
 
-  <h2>GitHub README & Setup Guide</h2>
-  <p>
-    Instructions for cloning, installing dependencies, running the project, and contributing.
-    Includes prerequisites, installation steps, testing, and contribution guidelines.
-  </p>
+  <script>
+    const form = document.getElementById('commentForm');
+    const commentList = document.getElementById('commentList');
 
-  <h2>Final Submission</h2>
-  <p>
-    Links or instructions for submitting the project to the relevant platform or evaluator.
-    Includes checklist, deadlines, and contact information.
-  </p>
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const comment = document.getElementById('comment').value;
+
+      if (name && comment) {
+        const commentDiv = document.createElement('div');
+        commentDiv.classList.add('comment');
+        commentDiv.innerHTML = `<strong>${name}</strong><p>${comment}</p>`;
+        commentList.appendChild(commentDiv);
+
+        form.reset();
+      }
+    });
+  </script>
+
 </body>
 </html>
